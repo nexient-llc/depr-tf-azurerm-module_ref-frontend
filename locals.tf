@@ -22,16 +22,16 @@ locals {
   tags = merge(var.custom_tags, local.default_tags)
 
   # Primary origin is always the storage account provisioned as a dependent storage account module (module.storage_account.storage_account)
-  primary_origin = element(var.origins, 0)
-  other_origins = length(var.origins) > 1 ? slice(var.origins, 1, length(var.origins)) : []
-  modified_primary_origin = merge(local.primary_origin, {hostname = nonsensitive(module.storage_account.storage_account.primary_web_host)})
-  modified_origins = concat([local.modified_primary_origin], local.other_origins)
+  primary_origin          = element(var.origins, 0)
+  other_origins           = length(var.origins) > 1 ? slice(var.origins, 1, length(var.origins)) : []
+  modified_primary_origin = merge(local.primary_origin, { hostname = nonsensitive(module.storage_account.storage_account.primary_web_host) })
+  modified_origins        = concat([local.modified_primary_origin], local.other_origins)
 
   # The key_vault_name and key_vault_rg needs to be populated from other dependent modules
   custom_user_managed_https = {
-    enable_custom_https = var.enable_user_managed_https
-    key_vault_name = module.key_vault.key_vault_name
-    key_vault_rg = local.resource_group_name
+    enable_custom_https     = var.enable_user_managed_https
+    key_vault_name          = module.key_vault.key_vault_name
+    key_vault_rg            = local.resource_group_name
     certificate_secret_name = var.certificate_secret_name
   }
 }

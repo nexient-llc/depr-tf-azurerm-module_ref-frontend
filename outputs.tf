@@ -28,15 +28,15 @@ output "storage_account" {
 }
 
 output "storage_shares" {
-  value     = module.storage_account.storage_shares
+  value = module.storage_account.storage_shares
 }
 
 output "storage_containers" {
-  value     = module.storage_account.storage_containers
+  value = module.storage_account.storage_containers
 }
 
 output "storage_queues" {
-  value     = module.storage_account.storage_queues
+  value = module.storage_account.storage_queues
 }
 
 
@@ -71,15 +71,15 @@ output "key_ids" {
 
 output "cdn_profile_id" {
   description = "The ID of the CDN Profile"
-  value = module.azure_cdn.cdn_profile_id
+  value       = module.azure_cdn.cdn_profile_id
 }
 
 output "cdn_endpoint_id" {
   description = "The ID of the CDN Endpoint"
-  value = module.azure_cdn.cdn_endpoint_id
+  value       = module.azure_cdn.cdn_endpoint_id
 }
 
 output "dns_cname_fqdn" {
   description = "The FQDN for custom domain"
-  value = module.azure_cdn.dns_cname_fqdn
+  value       = module.azure_cdn.dns_cname_fqdn
 }

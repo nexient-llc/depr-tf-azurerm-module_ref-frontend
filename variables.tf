@@ -350,9 +350,9 @@ variable "custom_domain" {
   default = {
     enable_custom_domain = false
     create_cname_record  = false
-    cname_record = ""
-    dns_zone = ""
-    dns_rg = ""
+    cname_record         = ""
+    dns_zone             = ""
+    dns_rg               = ""
   }
 }
 
@@ -360,12 +360,12 @@ variable "custom_domain" {
 
 variable "enable_user_managed_https" {
   description = "Whether to enable HTTPS for the custom domain."
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "certificate_secret_name" {
   description = "The name of the certificate secret for custom domain in the key-vault. Optional, required only when enable_user_managed_https = true"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
