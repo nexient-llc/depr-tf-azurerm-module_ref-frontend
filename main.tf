@@ -49,9 +49,9 @@ module "key_vault" {
 
   resource_group             = local.resource_group
   key_vault_name             = local.key_vault_name
-  soft_delete_retention_days = var.soft_delete_retention_days
-  sku_name                   = var.key_vault_sku
-  access_policies            = var.key_vault_access_policies
+  soft_delete_retention_days = var.kv_soft_delete_retention_days
+  sku_name                   = var.kv_sku
+  access_policies            = var.kv_access_policies
   certificates               = var.certificates
   secrets                    = var.secrets
   keys                       = var.keys
@@ -69,9 +69,9 @@ module "azure_cdn" {
   is_http_allowed               = var.is_cdn_http_allowed
   is_https_allowed              = var.is_cdn_https_allowed
   querystring_caching_behaviour = var.querystring_caching_behaviour
-  optimization_type             = var.optimization_type
+  optimization_type             = var.cdn_optimization_type
   origins                       = local.modified_origins
-  delivery_rules                = var.delivery_rules
+  delivery_rules                = var.cdn_delivery_rules
   custom_domain                 = var.custom_domain
   custom_user_managed_https     = local.custom_user_managed_https
 

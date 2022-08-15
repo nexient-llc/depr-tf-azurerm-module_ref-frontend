@@ -219,19 +219,19 @@ variable "blob_container_delete_retention_policy" {
 # Variables associated with key vault module
 ########################################################
 
-variable "soft_delete_retention_days" {
-  description = "Number of retention days for soft delete"
+variable "kv_soft_delete_retention_days" {
+  description = "Number of retention days for soft delete for key vault"
   type        = number
   default     = 7
 }
 
-variable "key_vault_sku" {
+variable "kv_sku" {
   description = "SKU for the key vault - standard or premium"
   type        = string
   default     = "standard"
 }
 
-variable "key_vault_access_policies" {
+variable "kv_access_policies" {
   description = "Additional Access policies for the vault except the current user which are added by default"
   type = map(object({
     object_id               = string
@@ -312,7 +312,7 @@ variable "querystring_caching_behaviour" {
   }
 }
 
-variable "optimization_type" {
+variable "cdn_optimization_type" {
   description = "Optimization type. Possible values:  DynamicSiteAcceleration, GeneralMediaStreaming, GeneralWebDelivery, LargeFileDownload and VideoOnDemandMediaStreaming"
   type        = string
   default     = "GeneralWebDelivery"
@@ -330,7 +330,7 @@ variable "origins" {
   }))
 }
 
-variable "delivery_rules" {
+variable "cdn_delivery_rules" {
   description = "List of delivery rules for the endpoint. Currently supports only URL Rewrite and Redirect Actions"
   type        = any
   default     = {}

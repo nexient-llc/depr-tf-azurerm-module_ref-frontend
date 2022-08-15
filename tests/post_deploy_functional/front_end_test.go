@@ -35,7 +35,7 @@ func (suite *TerraTestSuite) SetupSuite() {
 	pwd, _ := os.Getwd()
 	suite.TerraformOptions = terraform.WithDefaultRetryableErrors(suite.T(), &terraform.Options{
 		TerraformDir: tempTestFolder,
-		VarFiles:     [](string){path.Join(pwd, "..", "minimal.tfvars")},
+		VarFiles:     [](string){path.Join(pwd, "..", "demo.tfvars")},
 	})
 	// unable to make the terraform idempotent for the User Identity (identity_ids)
 	terraform.InitAndApply(suite.T(), suite.TerraformOptions)

@@ -91,7 +91,7 @@ origins = [
   }
 ]
 
-delivery_rules = {
+cdn_delivery_rules = {
   RedirectRules = {
     properties = {
       name  = "RedirectRules"
