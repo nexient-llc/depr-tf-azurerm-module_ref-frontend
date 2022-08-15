@@ -59,22 +59,26 @@ module "key_vault" {
   custom_tags = local.tags
 }
 
-# module "azure_cdn" {
-#   source = "github.com/nexient-llc/tf-azurerm-module-cdn.git?ref=feature/init"
+module "azure_cdn" {
+  source = "git@github.com:nexient-llc/tf-azurerm-module-cdn.git?ref=feature/init"
 
-#   resource_group = local.resource_group
-#   cdn_profile_name = local.cdn_profile_name
-#   sku = var.cdn_sku
-#   cdn_endpoint_name = local.cdn_endpoint_name
-#   is_http_allowed = var.is_cdn_http_allowed
-#   is_https_allowed = var.is_cdn_https_allowed
-#   querystring_caching_behaviour = var.querystring_caching_behaviour
-#   optimization_type = var.optimization_type
-#   origins = var.origins
-#   delivery_rules = var.delivery_rules
-#   custom_domain = var.custom_domain
-#   custom_user_managed_https = var.custom_user_managed_https
+  resource_group = local.resource_group
+  cdn_profile_name = local.cdn_profile_name
+  sku = var.cdn_sku
+  cdn_endpoint_name = local.cdn_endpoint_name
+  is_http_allowed = var.is_cdn_http_allowed
+  is_https_allowed = var.is_cdn_https_allowed
+  querystring_caching_behaviour = var.querystring_caching_behaviour
+  optimization_type = var.optimization_type
+  origins = local.modified_origins
+  delivery_rules = var.delivery_rules
+  custom_domain = var.custom_domain
+  custom_user_managed_https = local.custom_user_managed_https
 
-#   custom_tags = local.tags
+  custom_tags = local.tags
 
-# }
+  depends_on = [
+    module.key_vault
+  ]
+
+}

@@ -1,4 +1,4 @@
-module github.com/nexient-llc/tf-module-skeleton
+module github.com/nexient-llc/tf-azurerm-module_ref-frontend
 
 go 1.15
 

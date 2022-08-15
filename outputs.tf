@@ -27,11 +27,6 @@ output "storage_account" {
   sensitive = true
 }
 
-output "primary_web_host" {
-  value = nonsensitive(module.storage_account.storage_account.primary_web_host)
-  sensitive = false
-}
-
 output "storage_shares" {
   value     = module.storage_account.storage_shares
 }
@@ -43,8 +38,6 @@ output "storage_containers" {
 output "storage_queues" {
   value     = module.storage_account.storage_queues
 }
-
-
 
 
 # Key vault related outputs
@@ -75,3 +68,18 @@ output "key_ids" {
 }
 
 # CDN related outputs
+
+output "cdn_profile_id" {
+  description = "The ID of the CDN Profile"
+  value = module.azure_cdn.cdn_profile_id
+}
+
+output "cdn_endpoint_id" {
+  description = "The ID of the CDN Endpoint"
+  value = module.azure_cdn.cdn_endpoint_id
+}
+
+output "dns_cname_fqdn" {
+  description = "The FQDN for custom domain"
+  value = module.azure_cdn.dns_cname_fqdn
+}
