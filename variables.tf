@@ -161,6 +161,10 @@ variable "access_tier" {
   description = "Choose between Hot or Cool"
   type        = string
   default     = "Hot"
+  validation {
+    condition = (contains(["Hot", "Cold"], var.access_tier))
+    error_message = "The access_tier must be either \"Hot\" or \"Cold\"."
+  }
 
 }
 
@@ -229,6 +233,10 @@ variable "kv_sku" {
   description = "SKU for the key vault - standard or premium"
   type        = string
   default     = "standard"
+  validation {
+    condition = (contains(["standard", "premium"], var.kv_sku))
+    error_message = "The kv_sku must be either \"standard\" or \"premium\"."
+  }
 }
 
 variable "kv_access_policies" {
@@ -288,6 +296,10 @@ variable "cdn_sku" {
   description = "SKU of the CDN profile. Must be either \"Standard_Microsoft\" or \"Standard_Akamai\" or \"Standard_ChinaCdn\" or \"Standard_Verizon\" or \"Premium_Verizon\""
   type        = string
   default     = "Standard_Microsoft"
+  validation {
+    condition     = (contains(["Standard_Microsoft", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Verizon", "Premium_Verizon"], var.cdn_sku))
+    error_message = "The cdn_sku must be either \"Standard_Microsoft\" or \"Standard_Akamai\" or \"Standard_ChinaCdn\" or \"Standard_Verizon\" or \"Premium_Verizon\"."
+  }
 }
 
 variable "is_cdn_http_allowed" {
@@ -316,6 +328,10 @@ variable "cdn_optimization_type" {
   description = "Optimization type. Possible values:  DynamicSiteAcceleration, GeneralMediaStreaming, GeneralWebDelivery, LargeFileDownload and VideoOnDemandMediaStreaming"
   type        = string
   default     = "GeneralWebDelivery"
+  validation {
+    condition     = (contains(["DynamicSiteAcceleration", "GeneralMediaStreaming", "GeneralWebDelivery", "LargeFileDownload", "VideoOnDemandMediaStreaming"], var.cdn_optimization_type))
+    error_message = "The cdn_sku must be either \"DynamicSiteAcceleration\" or \"GeneralMediaStreaming\" or \"GeneralWebDelivery\" or \"LargeFileDownload\" or \"VideoOnDemandMediaStreaming\"."
+  }
 }
 
 # Currently only single origin is supported by terraform although multi origin is supported by Azure with origin Groups.
