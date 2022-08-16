@@ -3,7 +3,7 @@ locals {
   cdn_profile_name     = module.resource_name["cdn_profile"].recommended_per_length_restriction
   cdn_endpoint_name    = module.resource_name["cdn_endpoint"].recommended_per_length_restriction
   key_vault_name       = module.resource_name["key_vault"].recommended_per_length_restriction
-  storage_account_name = module.resource_name["storage_account"].lower_case
+  storage_account_name = length(module.resource_name["storage_account"].lower_case) > var.resource_types["storage_account"].maximum_length ? module.resource_name["storage_account"].recommended_per_length_restriction : module.resource_name["storage_account"].lower_case
 
   resource_group = {
     location = var.resource_group.location
