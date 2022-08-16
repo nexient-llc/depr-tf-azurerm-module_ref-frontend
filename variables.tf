@@ -162,7 +162,7 @@ variable "access_tier" {
   type        = string
   default     = "Hot"
   validation {
-    condition = (contains(["Hot", "Cold"], var.access_tier))
+    condition     = (contains(["Hot", "Cold"], var.access_tier))
     error_message = "The access_tier must be either \"Hot\" or \"Cold\"."
   }
 
@@ -234,7 +234,7 @@ variable "kv_sku" {
   type        = string
   default     = "standard"
   validation {
-    condition = (contains(["standard", "premium"], var.kv_sku))
+    condition     = (contains(["standard", "premium"], var.kv_sku))
     error_message = "The kv_sku must be either \"standard\" or \"premium\"."
   }
 }
