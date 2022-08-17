@@ -60,7 +60,7 @@ module "key_vault" {
 }
 
 module "azure_cdn" {
-  source = "git@github.com:nexient-llc/tf-azurerm-module-cdn.git?ref=feature/init"
+  source = "git@github.com:nexient-llc/tf-azurerm-module-cdn.git?ref=0.1.0"
 
   resource_group                = local.resource_group
   cdn_profile_name              = local.cdn_profile_name
