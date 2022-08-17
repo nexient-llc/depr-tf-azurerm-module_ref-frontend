@@ -1,5 +1,5 @@
-logical_product_name = "vvcfrontend"
-class_env = "prod"
+logical_product_name = "demorontend"
+class_env = "shared"
 resource_group = {
   location = "eastus"
 }
@@ -67,6 +67,7 @@ kv_access_policies = {
 }
 
 certificates = {
+    # The cert .pfx file should be placed in the module root directory
     "azurecdn-dsahoo-com" = {
         certificate_name = "azurecdn.dsahoo.com.pfx"
         password = ""
